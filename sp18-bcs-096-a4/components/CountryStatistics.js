@@ -100,24 +100,21 @@ axios.request(option).then(function (response) {
 
   return (
     <View style={styles.container}>
-
-    <Header openDrawer={navigation.openDrawer} />
-    
-      <View style = {styles.container3}>
+     
+      <Header name="Stats By Country" openDrawer={navigation.openDrawer}/>
       <TextInput 
-         style={styles.textInput1}
+         style={styles.textInput}
          onChangeText={(text) => searchData(text)}
          value={text}
          underlineColorAndroid='transparent'
          placeholder="Search Here" />
-      </View>
+      
       <FlatList
-      style={styles.textInput}
         data={countries}
         renderItem={({item})=>(<View>
-        <TouchableOpacity  style={styles.container2} >
-        <Text onPress={()=>{viewStatistics(item)}} >{item}{item.check}></Text>
-        <Iconz onPress={()=>{addItem(item)}} name="star-outlined" color={'yellow'}></Iconz>
+        <TouchableOpacity  style={styles.appButton} >
+        <Text onPress={()=>{viewStatistics(item)}} style={styles.fortext2}>{item}{item.check}></Text>
+        <Iconz onPress={()=>{addItem(item)}} name="star-outlined" color={'#2f3b39'}></Iconz>
         </TouchableOpacity>
         
         
@@ -126,9 +123,7 @@ axios.request(option).then(function (response) {
         keyExtractor={(item, index) => item.id}
         
       />
-      
-<Button onPress={() => navigation.navigate('Favorite Countries')} title="Go see favorite countries" color = 'black' />.
-
+       <Button onPress={() => navigation.navigate('Favorite Countries')} title="Show Favorites" color = 'black' />
     </View>
   );
 }
@@ -139,40 +134,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'brown',
   },
-   container2: {
-    flex: 1,
-    paddingTop: 40,
-    alignItems: 'center',
-    backgroundColor: 'brown',
-   
-  },
-    container3: {
  
-    paddingTop: 1,
-    alignItems: 'center',
-    backgroundColor: 'brown',
-    paddingBottom: 22
-  
-     
-  },
-  
-  
   textInput: {
 
     textAlign: 'center',
     height: 42,
-  },
-   textInput1: {
-  
-    textAlign: 'center',
-    height: 42,
     borderWidth: 1,
+    borderColor: '#009688',
     borderRadius: 8,
-    backgroundColor: '#2f3b39',
-    paddingTop: 22,
-    paddingBottom: 30,
-
   },
+
   header:{
     width:"100%",
     height:30,
